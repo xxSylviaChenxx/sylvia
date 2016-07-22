@@ -1,0 +1,25 @@
+CREATE TABLE aqi (
+            ID INTEGER NOT NULL PRIMARY KEY,          
+            division UNSIGNED BIG INT(10) NOT NULL,     - 行政编码
+            areaName VARCHAR(12) DEFAULT NULL,          - 地区名
+            value INTEGER NOT NULL,                     - 值
+            pollutant INTEGER DEFAULT NULL,             - 污染类型
+            recordDate DATE NOT NULL,                   - 记录时间
+            _fetchDate DATE NOT NULL,                   - 抓取时间
+            source VARCHAR(8) DEFAULT NULL              - 来源
+        );
+        -- 地区表
+CREATE TABLE areas (
+            ID INTEGER NOT NULL PRIMARY KEY,
+            division UNSIGNED BIG INT(10) NOT NULL,     - 行政编码 
+            name VARCHAR(12) NOT NULL,                  - 地区名
+            engName VARCHAR(64),                        - 地区英文名
+            pinyinName VARCHAR(64),                     - 地区中文拼音
+            bottom BOOLEAN DEFAULT FALSE,               - 是否是最后一级地区
+            superior UNSIGNED BIG INT(10)               - 上级地区编码，顶级为0
+        );
+        -- 污染类型表
+CREATE TABLE pollutant (
+            ID INTEGER NOT NULL PRIMARY KEY,
+            name VARCHAR(32) NOT NULL                   - 污染类型名称
+        );
